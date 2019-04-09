@@ -1,0 +1,28 @@
+{
+  "name": "lambdabot-discord",
+  "version": "0.1.0",
+  "description": "A port of the famous #haskell lambdabot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FliiFe/lambdabot-discord.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "haskell"
+  ],
+  "author": "Théophile Cailliau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FliiFe/lambdabot-discord/issues"
+  },
+  "homepage": "https://github.com/FliiFe/lambdabot-discord#readme",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "promisify-child-process": "^3.1.0"
+  }
+}
