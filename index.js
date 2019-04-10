@@ -14,6 +14,10 @@ client.on('message', async m => {
         const expr = m.content.slice(4)
         m.channel.send(`Input: \`\`\`haskell\n${expr}\`\`\` Output: \`\`\`haskell\n${await evalExpr(expr)}\`\`\``)
     }
+    if(m.content.startsWith(':hoogle ')) {
+        const expr = m.content.slice(8)
+        m.channel.send(`Results:\`\`\`haskell\n${await hoogle(expr)}\n\`\`\``)
+    }
 })
 
 async function runMueval(expr, args) {
@@ -30,6 +34,12 @@ async function typeOfExpr(expr) {
 async function evalExpr(expr) {
     const {stdout: out} = await runMueval(expr, ['-t', '10'])
     return out
+}
+
+async function hoogle(expr) {
+    console.log('hoogling', expr)
+    const {stdout} = await spawn('hoogle', ['--', expr], {encoding: 'utf8'}).catch(e => e)
+    return stdout.replace(/^--.*$/mg, '')
 }
 
 client.login(process.env.DISCORD_TOKEN)
