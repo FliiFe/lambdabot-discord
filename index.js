@@ -2,7 +2,8 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const { spawn } = require('promisify-child-process')
 const fs = require('fs')
-fs.closeSync(fs.openSync('./.token', 'w'));
+const touch = require('touch')
+touch('./.token')
 
 client.on('ready', () => console.log(`Logged in as ${client.user.tag}!`))
 
@@ -44,4 +45,4 @@ async function hoogle(expr) {
     return stdout.replace(/^--.*$/mg, '')
 }
 
-client.login(fs.readFileSync('./.token', 'utf8', e => '') || process.env.DISCORD_TOKEN)
+client.login(fs.readFileSync('./.token', 'utf8') || process.env.DISCORD_TOKEN)
