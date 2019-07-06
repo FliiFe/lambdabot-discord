@@ -5,7 +5,7 @@ const { spawn } = require('promisify-child-process')
 client.on('ready', () => console.log(`Logged in as ${client.user.tag}!`))
 
 client.on('message', async m => {
-    console.log(m.content)
+    // console.log(m.content)
     if (m.content.startsWith(':t ')) {
         const expr = m.content.slice(3)
         m.channel.send(`Input: \`\`\`haskell\n${expr}\`\`\` Type: \`\`\`haskell\n${await typeOfExpr(expr)}\`\`\``)
